@@ -69,11 +69,18 @@ def predict_crop():
     output = weather_api(place)
     temperature = output['main']['temp']
     humidity = float(output['main']['humidity'])
+    print("Initial:",temperature,humidity)
     temp = kelvin_to_celsius(temperature)
+    print("Final:",temp,humidity)
     prediction = model.predict([[temp,humidity,ph,rainfall]])
     prediction = int(prediction)
     crop_name_predicted = crop_name(prediction)
-    return crop_name_predicted
+    return {
+        'crop_name_predicted' : crop_name_predicted ,
+        'temperature': temperature,
+        'humidity': humidity,
+        'temp': temp
+    }
 
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
