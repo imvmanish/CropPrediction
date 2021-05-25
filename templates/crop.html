@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/crop.css">
+    <title>Crop Prediction</title>
+</head>
+<body>
+    <h1 class="header-one">Crop Prediction</h1>
+    <form action="/prediction" method="post">
+        <div class="input-box">
+            <div class="input-place">
+                <label for="place">Place</label>
+                <input id="place" name="place" type="text">
+            </div>
+            <div class="input-rainfall">
+                <label for="rainfall">Rainfall</label>
+                <input id="rainfall" name="rainfall" type="number">
+            </div>
+            <div class="input-ph">
+                <label for="ph">pH</label>
+                <input id="ph" name="ph" type="number">
+            </div>
+        </div>
+        <div class="options">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+</body>
+</html>

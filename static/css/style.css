@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+}
+
+.header_main {
+    background: #23CE6B;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading {
+    margin-left: 1rem;
+}
+
+.navdiv ul {
+    display: flex;
+    list-style-type: none;
+}
+
+ul li a {
+    margin-left: 3rem;
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+ul li a:last-child {
+    margin-right: 2rem;
+}
+
+.back-image {
+    background-image: url('/static/images/farmer.jpg');
+    background-repeat: no-repeat;  
+    background-position: 0% 0%;
+    background-size: 100% 100%;
+    height: 95.3vh;
+}
+
+.quote {
+    font-size: 2rem;
+}
