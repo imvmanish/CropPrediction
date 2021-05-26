@@ -3,6 +3,10 @@ from flask import jsonify, make_response
 import joblib
 import requests
 import json
+import os
+from dotenv import load_dotenv,find_dotenv
+
+load_dotenv(find_dotenv())
 
 app = Flask(__name__)
 
@@ -15,7 +19,7 @@ def crop():
     return render_template('crop.html')
 
 def weather_api(city_name):
-    API_key = '2eb7f9289b3e6ee8b9d43ec77776e0fa'
+    API_key=os.environ.get('API_key')
     response = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_key}")
     return response.json()
 
