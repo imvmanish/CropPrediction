@@ -63,15 +63,13 @@ def crop_name(crop_number):
 @app.route('/prediction',methods=["POST"])
 def predict_crop():
     model = joblib.load('crop-predictor.joblib')
-    place = request.form['place']
-    rainfall = request.form['rainfall']
-    ph = request.form['ph']
-    output = weather_api(place)
-    temperature = output['main']['temp']
+    rainfall = float(request.form['rainfall'])
+    ph = float(request.form['ph'])
+    city = request.form.get("city").strip()
+    output = weather_api(city)
+    temperature = round(float(output['main']['temp']))
     humidity = float(output['main']['humidity'])
-    print("Initial:",temperature,humidity)
     temp = kelvin_to_celsius(temperature)
-    print("Final:",temp,humidity)
     prediction = model.predict([[temp,humidity,ph,rainfall]])
     prediction = int(prediction)
     crop_name_predicted = crop_name(prediction)
@@ -79,7 +77,8 @@ def predict_crop():
         'crop_name_predicted' : crop_name_predicted ,
         'temperature': temperature,
         'humidity': humidity,
-        'temp': temp
+        'temp': temp,
+        'city': city
     }
 
 if __name__ == "__main__":

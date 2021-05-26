@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Crop Prediction</title>
     <link rel="stylesheet" href="/static/css/style.css">
-    <title>Farmer's Best Friend</title>
-</head>
-
-<body>
+  </head>
+  <body>
     <header>
         <div class="header_main">
             <h1 class="heading">Crop Prediction</h1>
@@ -18,16 +14,69 @@
                     <ul class="navlist">
                         <li><a href="#">Home</a></li>
                         <li><a href="/crop">Crop Prediction</a></li>
-                    </ul>
+                     </ul>
                 </nav>
             </div>
         </div>
-        <div class="back-image">
-            <p class="quote">Best wishes to all the farmers around the world who work on acres to eat happily in our home.
-            </p>
-        </div>
     </header>
 
-</body>
+    <!--image slider start-->
+    <div class="slider2">
+      <div class="slider">
+      <div class="slides">
+        <!--radio buttons start-->
+        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        <input type="radio" name="radio-btn" id="radio4">
+        <!--radio buttons end-->
+        <!--slide images start-->
+        <div class="slide first">
+          <img src="/static/images/main4.gif" alt="">
+        </div>
+        <div class="slide">
+          <img src="/static/images/crop5.gif" alt="">
+        </div>
+        <div class="slide">
+          <img src="/static/images/crop1.gif" alt="">
+        </div>
+        <div class="slide">
+          <img src="/static/images/crop8.gif" alt="">
+        </div>
+        <!--slide images end-->
+        <!--automatic navigation start-->
+        <div class="navigation-auto">
+          <div class="auto-btn1"></div>
+          <div class="auto-btn2"></div>
+          <div class="auto-btn3"></div>
+          <div class="auto-btn4"></div>
+        </div>
+        <!--automatic navigation end-->
+      </div>
+      <!--manual navigation start-->
+      <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+      </div>
+      <!--manual navigation end-->
+    </div>
+    <!--image slider end-->
+    </div>
+    
 
+    <script type="text/javascript">
+    var counter = 1;
+    setInterval(function(){
+      document.getElementById('radio' + counter).checked = true;
+      counter++;
+      if(counter > 4){
+        counter = 1;
+      }
+    }, 5000);
+    </script>
+
+  </body>
 </html>
+      

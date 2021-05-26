@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/crop.css">
     <title>Crop Prediction</title>
+    <script src="/static/js/crop.js"></script>
 </head>
+
 <body>
     <h1 class="header-one">Crop Prediction</h1>
-    <form action="/prediction" method="post">
-        <div class="input-box">
-            <div class="input-place">
-                <label for="place">Place</label>
-                <input id="place" name="place" type="text">
-            </div>
-            <div class="input-rainfall">
-                <label for="rainfall">Rainfall</label>
-                <input id="rainfall" name="rainfall" type="number">
-            </div>
-            <div class="input-ph">
-                <label for="ph">pH</label>
-                <input id="ph" name="ph" type="number">
-            </div>
+    <div class="crop-box">
+        <div class="box">
+            <form action="/prediction" method="post">
+                <div class="input-box">
+                    <div class="input-rainfall">
+                        <label for="rainfall">Rainfall</label>
+                        <input id="rainfall" name="rainfall" type="text">
+                    </div>
+                    <div class="input-ph">
+                        <label for="ph">pH</label>
+                        <input id="ph" name="ph" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="State">State</label>
+                    <select onchange="print_city('state', this.selectedIndex);" id="sts" name="stt" class="form-control"
+                        style="font-weight: bold; color: black;" required></select>
+                    <br />
+                    <label for="City">City</label>
+                    <select id="state" class="form-control" name="city" style="font-weight: bold; color: black;"
+                        required></select>
+                    <script language="javascript">
+                        print_state("sts");
+                    </script>
+                </div>
+                <div class="options">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
         </div>
-        <div class="options">
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>
-        </div>
-    </form>
+    </div>
 </body>
 </html>
