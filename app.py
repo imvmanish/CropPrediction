@@ -8,27 +8,7 @@ from dotenv import load_dotenv,find_dotenv
 
 load_dotenv(find_dotenv())
 
-app = Flask(__name__)
-
-@app.route('/')
-def hello_world():
-    return render_template('index.html')
-
-@app.route('/crop')
-def crop():
-    return render_template('crop.html')
-
-def weather_api(city_name):
-    API_key=os.environ.get('API_key')
-    response = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_key}")
-    return response.json()
-
-def kelvin_to_celsius(kelvin):
-    celsius = float(kelvin) - 273.15
-    return celsius
-
-def crop_name(crop_number):
-    dict = {
+crop_dict = {
     1: 'Ground Nut',
     2: 'Chickpea',
     3: 'Peas',
@@ -60,8 +40,30 @@ def crop_name(crop_number):
     29: 'muskmelon',
     30: 'mango',
     31: 'Coconut'
-    }
-    answer = dict[crop_number]
+}
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return render_template('index.html')
+
+@app.route('/crop')
+def crop():
+    return render_template('crop.html')
+
+def weather_api(city_name):
+    API_key=os.environ.get('API_key')
+    response = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_key}")
+    print(response.json())
+    return response.json()
+
+def kelvin_to_celsius(kelvin):
+    celsius = float(kelvin) - 273.15
+    return celsius
+
+def crop_name(crop_number):
+    answer = crop_dict[crop_number]
     return answer
 
 @app.route('/prediction',methods=["POST"])
@@ -71,19 +73,17 @@ def predict_crop():
     ph = float(request.form['ph'])
     city = request.form.get("city").strip()
     output = weather_api(city)
-    temperature = round(float(output['main']['temp']))
-    humidity = float(output['main']['humidity'])
-    temp = kelvin_to_celsius(temperature)
-    prediction = model.predict([[temp,humidity,ph,rainfall]])
-    prediction = int(prediction)
-    crop_name_predicted = crop_name(prediction)
-    return {
-        'crop_name_predicted' : crop_name_predicted ,
-        'temperature': temperature,
-        'humidity': humidity,
-        'temp': temp,
-        'city': city
-    }
+    output_dict = dict(output)
+    if output_dict.get('cod') == 200:
+        temperature = round(float(output['main']['temp']))
+        humidity = float(output['main']['humidity'])
+        temp = kelvin_to_celsius(temperature)
+        prediction = model.predict([[temp,humidity,ph,rainfall]])
+        prediction = int(prediction)
+        crop_name_predicted = crop_name(prediction)
+        return render_template('output.html',crop = crop_name_predicted,number = prediction)
+    else:
+        return render_template('output.html',crop = None,number = None)
 
 if __name__ == "__main__":
     app.run(debug=True,port=8000)

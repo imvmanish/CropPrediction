@@ -89,3 +89,17 @@ button:active {
     background-color: greenyellow;
     color: black;
 }
+
+#err {
+    background-color: red;
+    color: white;
+    position: relative;
+    bottom: 100px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.visible {
+    padding: 16px;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Crop</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    * {box-sizing: border-box;}
+    
+    ::selection {
+        background-color: crimson;
+    }
+
+    body {
+        background-color: dodgerblue;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .container {
+      position: relative;
+      width: 50%;
+      max-width: 300px;
+    }
+    
+    .image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    
+    .overlay {
+      position: absolute; 
+      bottom: 0; 
+      background: rgb(255, 0, 0);
+      background: rgba(255, 0, 0, 0.5); 
+      color: #f1f1f1; 
+      width: 100%;
+      transition: .5s ease;
+      opacity:0;
+      color: white;
+      font-size: 20px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .container:hover .overlay {
+      opacity: 1;
+    }
+    </style>
+ </head>
+ <body>
+    <h1>Predicted Crop Name</h1>
+  {% if crop %}
+  <h2>{{crop}}</h2>
+  <div class="container">
+    <img class="image" src= "/static/images/crops/{{number}}.jpg">
+    <div class="overlay">{{crop.title()}}</div>
+  </div>
+  {% else %}
+  <h2>The Place Details You Provided Needs Premium API Access!Please Try Other City!</h2>
+  {% endif %}
+ </body>
+</html>
