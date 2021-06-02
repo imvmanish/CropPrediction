@@ -86,3 +86,5 @@ def predict_crop():
     else:
         return render_template('output.html',crop = None,number = None)
 
+if __name__ == "__main__":
+		app.run()
