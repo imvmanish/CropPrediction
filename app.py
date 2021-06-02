@@ -44,14 +44,6 @@ crop_dict = {
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    return render_template('index.html')
-
-@app.route('/crop')
-def crop():
-    return render_template('crop.html')
-
 def weather_api(city_name):
     API_key=os.environ.get('API_key')
     response = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_key}")
@@ -65,6 +57,14 @@ def kelvin_to_celsius(kelvin):
 def crop_name(crop_number):
     answer = crop_dict[crop_number]
     return answer
+
+@app.route('/')
+def hello_world():
+    return render_template('index.html')
+
+@app.route('/crop')
+def crop():
+    return render_template('crop.html')
 
 @app.route('/prediction',methods=["POST"])
 def predict_crop():
