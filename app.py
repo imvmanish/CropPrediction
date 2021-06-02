@@ -8,6 +8,7 @@ import naive_bayes
 from dotenv import load_dotenv,find_dotenv
 
 load_dotenv(find_dotenv())
+app = Flask(__name__)
 
 crop_dict = {
     1: 'Ground Nut',
@@ -42,8 +43,6 @@ crop_dict = {
     30: 'mango',
     31: 'Coconut'
 }
-
-app = Flask(__name__)
 
 def weather_api(city_name):
     API_key=os.environ.get('API_key')
