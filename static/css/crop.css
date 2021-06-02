@@ -103,3 +103,23 @@ button:active {
 .visible {
     padding: 16px;
 }
+
+@media screen and (max-width: 630px) {
+    .crop-box {
+        width: 300px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .crop-box {
+        width: 250px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
