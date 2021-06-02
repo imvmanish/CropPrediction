@@ -85,3 +85,4 @@ def predict_crop():
         return render_template('output.html',crop = crop_name_predicted,number = prediction)
     else:
         return render_template('output.html',crop = None,number = None)
+
