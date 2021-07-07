@@ -2,9 +2,7 @@ from flask import Flask, render_template ,request
 from flask import jsonify, make_response
 import joblib
 import requests
-import json
 import os
-import naive_bayes
 from dotenv import load_dotenv,find_dotenv
 
 load_dotenv(find_dotenv())

@@ -1,47 +1,9 @@
- @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
- * {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
-}
-
-.header_main {
-  background: #206a5d;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.heading {
-  margin-left: 1rem;
-}
-
-.navdiv ul {
-  display: flex;
-  list-style-type: none;
-}
-
-ul li a {
-  margin-left: 3rem;
-  color: white;
-  text-decoration: none;
-  font-size: 2rem;
-  font-weight: 500;
-}
-
-ul li a:last-child {
-  margin-right: 2rem;
 }
 
 .slider2{
@@ -164,7 +126,80 @@ ul li a:last-child {
   background: #40D3DC;
 }
 
+html {
+    font-size: 62.5%;
+}
 
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+}
 
+.header_main {
+    background: #206a5d;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-      
+.heading {
+    margin-left: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid rgba(0,0,0,.87);
+    animation: animIntro 3.5s steps(23,end),
+               animBar 1s step-end infinite;
+}
+.a1 {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid rgba(0,0,0,.87);
+    animation: animIntro 3.5s steps(23,end),
+               animBar 1s step-end infinite;
+}
+.a2 {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid rgba(0,0,0,.87);
+    animation: animIntro 3.5s steps(23,end),
+               animBar 1s step-end infinite;
+}
+
+@keyframes animIntro {
+  0%{width: 0;}
+  100%{width: 265px;}
+}
+@keyframes animBar {
+  0%,100%{border-color: rgba(0,0,0,0);}
+  50%{border-color: rgba(0,0,0..87)}
+}
+
+.navdiv ul {
+    display: flex;
+    list-style-type: none;
+}
+
+ul li a {
+    margin-left: 3rem;
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+ul li a:last-child {
+    margin-right: 2rem;
+}
+
+.back-image {
+    background-image: url('farmer.jpg');
+    background-repeat: no-repeat;  
+    background-position: 0% 0%;
+    background-size: 100% 100%;
+    height: 95.3vh;
+}
+
+.quote {
+    font-size: 2rem;
+}
